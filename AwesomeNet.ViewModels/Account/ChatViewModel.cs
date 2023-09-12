@@ -15,6 +15,8 @@ namespace AwesomeNet.ViewModels.Account
 
         public MessageViewModel NewMessage { get; set; }
 
+        public DateTime TimeMark { get; set; }
+
         public ChatViewModel()
         {
             NewMessage = new MessageViewModel();

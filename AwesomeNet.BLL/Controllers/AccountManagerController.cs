@@ -318,6 +318,7 @@ namespace AwesomeNet.CNTR.Controllers
                 You = result,
                 ToWhom = friend,
                 History = mess.OrderBy(x => x.Id).ToList(),
+                TimeMark = System.DateTime.UtcNow
             };
             return View("Chat", model);
             //return PartialView("Chat", model);
@@ -340,6 +341,7 @@ namespace AwesomeNet.CNTR.Controllers
                 You = result,
                 ToWhom = friend,
                 History = mess.OrderBy(x => x.Id).ToList(),
+                TimeMark = System.DateTime.UtcNow
             };
 
             return model;
