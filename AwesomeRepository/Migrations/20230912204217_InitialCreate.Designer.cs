@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AwesomeNet.Unit35.Migrations
+namespace AwesomeNet.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230906103908_initial")]
-    partial class initial
+    [Migration("20230912204217_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace AwesomeNet.Unit35.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AwesomeNet.Unit35.Models.Friend", b =>
+            modelBuilder.Entity("AwesomeNet.Repository.Models.Friend", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace AwesomeNet.Unit35.Migrations
                     b.ToTable("UserFriends");
                 });
 
-            modelBuilder.Entity("AwesomeNet.Unit35.Models.Message", b =>
+            modelBuilder.Entity("AwesomeNet.Repository.Models.Message", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,6 +63,9 @@ namespace AwesomeNet.Unit35.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("TimeMark")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RecipientId");
@@ -72,7 +75,7 @@ namespace AwesomeNet.Unit35.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("AwesomeNet.Unit35.Models.User", b =>
+            modelBuilder.Entity("AwesomeNet.Repository.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -289,13 +292,13 @@ namespace AwesomeNet.Unit35.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AwesomeNet.Unit35.Models.Friend", b =>
+            modelBuilder.Entity("AwesomeNet.Repository.Models.Friend", b =>
                 {
-                    b.HasOne("AwesomeNet.Unit35.Models.User", "UserFriend")
+                    b.HasOne("AwesomeNet.Repository.Models.User", "UserFriend")
                         .WithMany()
                         .HasForeignKey("UserFriendId");
 
-                    b.HasOne("AwesomeNet.Unit35.Models.User", "User")
+                    b.HasOne("AwesomeNet.Repository.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
@@ -304,13 +307,13 @@ namespace AwesomeNet.Unit35.Migrations
                     b.Navigation("UserFriend");
                 });
 
-            modelBuilder.Entity("AwesomeNet.Unit35.Models.Message", b =>
+            modelBuilder.Entity("AwesomeNet.Repository.Models.Message", b =>
                 {
-                    b.HasOne("AwesomeNet.Unit35.Models.User", "Recipient")
+                    b.HasOne("AwesomeNet.Repository.Models.User", "Recipient")
                         .WithMany()
                         .HasForeignKey("RecipientId");
 
-                    b.HasOne("AwesomeNet.Unit35.Models.User", "Sender")
+                    b.HasOne("AwesomeNet.Repository.Models.User", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId");
 
@@ -330,7 +333,7 @@ namespace AwesomeNet.Unit35.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("AwesomeNet.Unit35.Models.User", null)
+                    b.HasOne("AwesomeNet.Repository.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -339,7 +342,7 @@ namespace AwesomeNet.Unit35.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("AwesomeNet.Unit35.Models.User", null)
+                    b.HasOne("AwesomeNet.Repository.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -354,7 +357,7 @@ namespace AwesomeNet.Unit35.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AwesomeNet.Unit35.Models.User", null)
+                    b.HasOne("AwesomeNet.Repository.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -363,7 +366,7 @@ namespace AwesomeNet.Unit35.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("AwesomeNet.Unit35.Models.User", null)
+                    b.HasOne("AwesomeNet.Repository.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

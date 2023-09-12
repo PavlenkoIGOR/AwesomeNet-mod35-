@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AwesomeNet.Unit35.Migrations
+namespace AwesomeNet.Repository.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -167,7 +167,8 @@ namespace AwesomeNet.Unit35.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SenderId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    RecipientId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    RecipientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    TimeMark = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

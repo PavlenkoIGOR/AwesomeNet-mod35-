@@ -14,6 +14,8 @@ namespace AwesomeNet.Repository.Models
 
         public string RecipientId { get; set; }
         public User Recipient { get; set; }
+
+        public DateTime TimeMark { get; set; }  
     }
 
 }
