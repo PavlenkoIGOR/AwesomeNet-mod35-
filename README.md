@@ -1,4 +1,4 @@
-#Проект создан в кооперации с https://github.com/kraftSM/AwesomeNet.Unit35.
+# Проект создан в кооперации с https://github.com/kraftSM/AwesomeNet.Unit35.
 
 -пришлось отделить гит из-за проблем со слиянием и оповещением об изменениях на сайте самого git'a;
 -добавлен DataTime.UtcNow;
